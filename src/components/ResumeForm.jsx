@@ -17,27 +17,13 @@ const ResumeForm = () => {
 
 
     const onSubmit = async(data) => {
-        const {name, experience, job, skills} = data;
 
         const formData = {
             ...data,
             skills:skills?.join(", ")
         }
 
-        console.log(formData)
-
-        // fetch("http://localhost:2013/resume/generate", {
-        // method: "POST",
-        // headers: {
-        //     "Content-Type": "application/json"
-        // },
-        // body: JSON.stringify(formData)
-        // });
-
         const response = await request("POST","/resume/generate",formData);
-
-    console.log(response);
-
     }
   return (
     <div>
