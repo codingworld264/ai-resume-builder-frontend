@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useForm, Controller } from "react-hook-form";
 import { TagsInput } from "react-tag-input-component";
+import useApi from '../hooks/useApi';
 
 const ResumeForm = () => {
     
@@ -12,8 +13,10 @@ const ResumeForm = () => {
     } = useForm();
 
     const [skills, setSkills] = useState([]);
+    const { request, loading, error } = useApi();
 
-    const onSubmit = (data) => {
+
+    const onSubmit = async(data) => {
         const {name, experience, job, skills} = data;
 
         const formData = {
@@ -23,13 +26,28 @@ const ResumeForm = () => {
 
         console.log(formData)
 
+        // fetch("http://localhost:2013/resume/generate", {
+        // method: "POST",
+        // headers: {
+        //     "Content-Type": "application/json"
+        // },
+        // body: JSON.stringify(formData)
+        // });
+
+        const response = await request("POST","/resume/generate",formData);
+
+    console.log(response);
+
     }
   return (
     <div>
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label htmlFor='name'>Name</label>
-                <input type="text" placeholder="Enter Name" name="name" id="name" {...register("name", {required:"Name is required"})}/>
+                <input type="text" placeholder="Enter Name" name="name" id="name" {...register("name", {required:"Name is required", pattern:{
+                    value: /^[A-Za-z]+( [A-Za-z]+)*$/,
+                    message: "Please enter a valid name."
+                }})}/>
                 {errors?.name && (
                     <p>{errors?.name?.message}</p>
                 )}
