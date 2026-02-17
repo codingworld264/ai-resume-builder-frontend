@@ -24,6 +24,7 @@ const ResumeForm = () => {
         }
 
         const response = await request("POST","/resume/generate",formData);
+   
     }
   return (
     <div>

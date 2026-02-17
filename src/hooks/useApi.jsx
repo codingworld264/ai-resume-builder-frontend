@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import api from '../api/axios';
+import { toast } from 'react-toastify';
 
 const useApi = () => {
     const [loading, setLoading] = useState(false);
@@ -15,6 +16,13 @@ const useApi = () => {
                 method,
                 data
             })
+            console.log("hook resonse",response )
+
+            if(!response?.data?.status){
+                toast.error(response?.data?.message)
+            }else{
+                toast.success(response?.data?.message)
+            }
             return response.data;
         }catch(err){
             setError(err.response?.data?.message || "Something went wrong");
