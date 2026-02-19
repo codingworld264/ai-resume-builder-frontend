@@ -3,6 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 import { TagsInput } from "react-tag-input-component";
 import jsPDF from "jspdf";
 import useApi from '../hooks/useApi';
+import { toast } from 'react-toastify';
 
 const ResumeForm = () => {
     
@@ -26,8 +27,9 @@ const ResumeForm = () => {
         }
 
         const response = await request("POST","/resume/generate",formData);
-        if(response?.data?.content){
-             setContent( response?.data?.content);
+        if(response?.status){
+            toast.success(response?.message)
+            setContent( response?.data?.content || "");
         }
     }
   return (
