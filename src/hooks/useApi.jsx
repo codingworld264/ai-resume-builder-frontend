@@ -6,7 +6,7 @@ const useApi = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const request = async(method, url, data=null) => {
+    const request = async(method, url, data={}) => {
         setLoading(true);
         setError(null);
 
@@ -16,12 +16,9 @@ const useApi = () => {
                 method,
                 data
             })
-            console.log("hook resonse",response )
 
             if(!response?.data?.status){
                 toast.error(response?.data?.message)
-            }else{
-                toast.success(response?.data?.message)
             }
             return response.data;
         }catch(err){
