@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useForm, Controller } from "react-hook-form";
 import { TagsInput } from "react-tag-input-component";
+import jsPDF from "jspdf";
 import useApi from '../hooks/useApi';
 
 const ResumeForm = () => {
@@ -9,12 +10,13 @@ const ResumeForm = () => {
         register,
         handleSubmit,
         formState:{errors},
-        control
+        control,
+        reset 
     } = useForm();
 
     const [skills, setSkills] = useState([]);
     const { request, loading, error } = useApi();
-
+    const [content, setContent] = useState("");
 
     const onSubmit = async(data) => {
 
@@ -24,7 +26,9 @@ const ResumeForm = () => {
         }
 
         const response = await request("POST","/resume/generate",formData);
-   
+        if(response?.data?.content){
+             setContent( response?.data?.content);
+        }
     }
   return (
     <div>
@@ -88,9 +92,40 @@ const ResumeForm = () => {
                 )}
             </div>
             <div>
-                <button type="submit">Submit</button>
+                <button type="submit">{content ? "Re-generate":"Generate"}</button>
+                <button type="button" onClick={() => {
+                    reset();
+                    setSkills([]);
+                    setContent("");
+                }}>Reset</button>
             </div>
         </form>
+        {content && (
+            <div>
+                <button type="button" onClick={() => {
+                    const pdf = new jsPDF();
+                    const element = document.getElementById("resume");
+
+                    pdf.html(element, {
+                                       callback: function (doc) {
+                                            doc.save("resume.pdf");
+                                        },
+                                        margin: [10, 10, 10, 10], 
+                                        autoPaging: "text",
+                                        x: 10,
+                                        y: 10,
+                                        width: 190,
+                                        windowWidth: element.scrollWidth
+                    });
+                }}>Download</button>
+                Preview:
+            <div
+                id="resume"
+                dangerouslySetInnerHTML={{ __html: content }}
+            ></div>
+            </div>
+        )}
+        
     </div>
   )
 }
