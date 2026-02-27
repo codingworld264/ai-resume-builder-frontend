@@ -1,0 +1,240 @@
+body {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #2c2c2c;
+  border-radius: 12px;
+}
+
+.form-control {
+  background-color: #121212;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.form-control:focus {
+  background-color: #121212;
+  color: #fff;
+  border-color: #6c63ff;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: #6c63ff;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #ff4d4d;
+}
+
+.navbar {
+  background-color: #111;
+}
+
+
+
+
+
+
+
+
+/* Custom Black Navbar */
+.custom-navbar {
+  background-color: #111;
+  border-bottom: 1px solid #222;
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  color: #6c63ff !important;
+  font-size: 1.3rem;
+}
+
+.navbar-brand:hover {
+  color: #8f88ff !important;
+}
+
+.nav-link {
+  color: #ccc !important;
+  margin-right: 15px;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+}
+
+.navbar-toggler {
+  border-color: #444;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Page Title */
+.page-title {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Create Resume Link Styled as Button */
+.create-resume-link {
+  background: linear-gradient(45deg, #6c63ff, #8f88ff);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+}
+
+.create-resume-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(108, 99, 255, 0.5);
+  color: #fff;
+}
+
+/* Resume Card Hover */
+.resume-card {
+  transition: 0.3s ease;
+}
+
+.resume-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Create Resume Card */
+.create-resume-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2c2c2c;
+  border-radius: 12px;
+}
+
+/* Preview Card */
+.preview-card {
+  background-color: #141414;
+  border: 1px solid #2c2c2c;
+  border-radius: 12px;
+}
+
+/* Form Inputs */
+.form-control {
+  background-color: #121212;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.form-control:focus {
+  background-color: #121212;
+  color: #fff;
+  border-color: #6c63ff;
+  box-shadow: none;
+}
+
+/* Error Text */
+.error-text {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(45deg, #6c63ff, #8f88ff);
+  border: none;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(108, 99, 255, 0.5);
+  color: #fff;
+}
+
+/* Resume Preview Styling */
+.resume-preview {
+  background-color: #ffffff;
+  color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* Card Hover */
+.card {
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Wrapper like bootstrap input */
+.tags-container {
+  background-color: #121212;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+}
+
+.tags-container:focus-within {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 1px #6c63ff;
+}
+
+/* Main component container */
+.rti--container {
+  background: transparent !important;
+  border: none !important;
+  width: 100%;
+}
+
+/* Input field */
+.rti--input {
+  background: transparent !important;
+  color: #fff !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Placeholder */
+.rti--input::placeholder {
+  color: #777 !important;
+}
+
+/* Tag styling */
+.rti--tag {
+  background: linear-gradient(45deg, #6c63ff, #8f88ff) !important;
+  border-radius: 5px !important;
+  padding: 4px 10px !important;
+  color: #fff !important;
+  font-size: 0.85rem;
+}
+
+/* Remove icon inside tag */
+.rti--tag button {
+  color: #fff !important;
+}
+
+.btn-outline-light {
+    border: 1px solid #555;
+    color: #fff;
+}
+
+.btn-outline-light:hover {
+    background-color: #222;
+    border-color: #888;
+}
