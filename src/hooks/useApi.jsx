@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import api from '../api/axios';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import {setLoading} from "../store/features/userSlice";
 
 const useApi = () => {
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const dispatch = useDispatch();
 
     const request = async(method, url, data={}) => {
-        setLoading(true);
         setError(null);
 
         try{
@@ -22,14 +23,14 @@ const useApi = () => {
             }
             return response.data;
         }catch(err){
-            setError(err.response?.data?.message || "Something went wrong");
-            throw err;
+            toast.error(err?.response?.data?.message || "Something went wrong");
         } finally {
-            setLoading(false);
+            
+            dispatch(setLoading(false));
         }
     }
   
-    return { request, loading, error };
+    return { request, error };
 }
 
 export default useApi
